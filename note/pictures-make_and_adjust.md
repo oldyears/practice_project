@@ -24,6 +24,23 @@
 
 ### 动画生成
 
-+ 使用Inpaint工具，您可以在图像中标记出您想要移动的部分，然后生成多个变化的图像，然后将它们导入一个GIF或视频制作工具中，形成一个动画效果。
-+ 使用Deforum扩展，您可以从头开始生成一种“变形”的动画，它会将一个图像逐渐变成另一个图像，并输出一个MP4视频文件，您还可以添加音频。
-+ 
++ 使用Inpaint工具，可以在图像中标记出您想要移动的部分，然后生成多个变化的图像，然后将它们导入一个GIF或视频制作工具中，形成一个动画效果。
++ 使用Deforum扩展，可以从头开始生成一种“变形”的动画，它会将一个图像逐渐变成另一个图像，并输出一个MP4视频文件，您还可以添加音频。
+
+
+
+## 基本步骤
+
++ 首先第一步需要在本地配置stable diffusion的环境，现在可以在b站找到相应的一键部署整合包，这里给出我使用的资源链接
+  + [【AI绘画】Stable Diffusion整合包v4.2发布！全新加速 解压即用 防爆显存 三分钟入门AI绘画 ☆可更新 ☆训练 ☆汉化_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1iM4y1y7oA/)
+    + 第一步下载整合包![image](assets\image-1.png)
+    + 第二步，解压`sd-webui-aki-v4.2.7z`，并安装`启动器运行依赖-dotnet-6.0.11.exe`![image](assets/image-2.png)
+    + 安装完成后，打开文件夹后双击`A启动器.exe`即可打开引导界面![image](assets/image-3.png)   
+      ![image](assets/image-4.png)
+    + 点击`一键启动`即可在网页端打开控制面板页面![image](assets/image-5.png)
+    + 至此stable diffusion的环境配置完成
+  + 这个up也提供了一些关于二次元画风的图片生成教程，感兴趣的同学可以参考这个链接[【AI绘画】从零开始的AI绘画入门教程——魔法导论【持续更新】 - 哔哩哔哩 (bilibili.com)](https://www.bilibili.com/read/cv22159609)，但由于其个人价值观问题，未提供真人模型的训练方式，故后续的训练是我自己的经验
+  + 附上显卡速度天体榜[sdperformance - Grist (getgrist.com)](https://docs.getgrist.com/3mjouqRSdkBY/sdperformance)
++ 配置好环境之后，就可以开始进行模型生成，如果只是想要根据tags进行图片生成，只需要根据喜好添加所需的tags即可。**注：**尽可能使用好的显卡进行训练，如果打开整合包后显示只能使用CPU进行训练，我的建议是去艺传学院的机房，听说那边显卡是3060
++ 如果要进行的是真人的模型训练，则需要进行以下步骤
+  + 
