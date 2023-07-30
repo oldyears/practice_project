@@ -44,4 +44,34 @@
 + 配置好环境之后，就可以开始进行模型生成，如果只是想要根据tags进行图片生成，只需要根据喜好添加所需的tags即可。
   + **注：**尽可能使用好的显卡进行训练，如果打开整合包后显示只能使用CPU进行训练，我的建议是去艺传学院的机房，听说那边显卡是3060
 + 如果要进行的是真人的模型训练，则需要进行以下步骤
-  + 
+  + 首先通过学习了解到stable diffusion的基本模型，并根据其模型特征来选择我们所需要的模型，以便于后续训练，推荐网站[https://civitai.com/](https://link.zhihu.com/?target=https%3A//civitai.com/)
+    + 基础大模型
+      + SD系列，stable diffusion自带模型，效果不是很好，但若想自行训练模型，则需要以此为基础模型（需下载完整版）
+      + final-prune、animefull-latest系列，为NovelAI出的大模型，没有突出特色，比较中庸，属于中规中矩的基础模型
+    + 二次元大模型
+      + Anything系列，说是anything，其实主要是二次元漫画模型，出图效果最好，但风格比较单一，对关键词要求不高
+      + 葡萄柚、Hassaku系列，明亮、清晰的动漫风格模型，但后者非常容易出**NSFW**图片，谨慎使用，不需要额外的VAE
+      + Cetus-Mix，二次元混合模型，对提示词要求不高
+    + 写实大风格
+      + Chilloutmix/Chikmix模型，用于亚洲美女生成的经典模型
+      + Deliberate系列，万能模型，风格上偏油画和数绘风格，关键词必须详细填写
+      + Realistic Vision系列，比较适合人或动物，相对万能
+    + 5D/数绘风格
+      + PerfectWorld，欧美版的Chilloutmix模型，主要绘制于欧美风格的女性，偏2.5D，介于动漫和现实之间，基本默认**NSFW**，谨慎使用
+      + 国风系列，中国华丽古风风格模型，具有2.5D质感
+    + 特定风格
+      + 明快CrispMix，强调明快清爽，适合于时尚装饰的展示
+      + linecakeA1，配合Graphic design（LORA）使用效果最佳
+    + LORA微调模型
+      + 可以直接在C站中寻找相应模型下载后放入相应文件夹加载，即可使用
+      + KoreanDollLikeness/Taiwan doll likeness，配合Chilloutmix使用的亚洲女性lora，但需注意法律风险
+  + 这里我们要制作亚洲和欧洲以及拉丁美洲的模特图像，故选择
+    + 亚洲：Chilloutmix作为基础大模型，同时使用lora模型进行微调
+      + lora模型可以选择直接从C站下载训练好的模型，也可以自行训练想要的模型（配置要求较高）
+      + 训练教程
+    + 欧洲及拉丁美洲：PerfectWorld+Lora，先尝试一下看看效果
+  + 部署模型到stable diffusion
+    + 大模型：存放路径：\sd-webui-aki-v4\models\Stable-diffusion
+    + lora模型：存放路径：\sd-webui-aki-v4\models\Lora
+    + 未知模型：存放路径：[https://spell.novelai.dev/](https://link.zhihu.com/?target=https%3A//spell.novelai.dev/)在此网站解析后放入相应路径即可
+    + 
