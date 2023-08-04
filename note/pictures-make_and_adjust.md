@@ -6,6 +6,7 @@
 
 + 用stable diffusion产生中国，英国，俄国，法国，西班牙，葡萄牙，日本，阿拉伯国风格的男女模特或者地理风情的真实风格图片，总计80张（每个国家特色的10张），然后考虑人物的动画自动生成，包括语言对嘴型，以及各种情绪的动作和表情
 + 使用真实风格的模型
++ 这里按照男：女：风情图 = 2：2：1的比例来生成这些图片
 
 
 
@@ -65,13 +66,26 @@
     + LORA微调模型
       + 可以直接在C站中寻找相应模型下载后放入相应文件夹加载，即可使用
       + KoreanDollLikeness/Taiwan doll likeness，配合Chilloutmix使用的亚洲女性lora，但需注意法律风险
-  + 这里我们要制作亚洲和欧洲以及拉丁美洲的模特图像，故选择
+  + 这里我们要制作亚洲和欧洲以及拉丁美洲的模特图像和风景照，故选择
     + 亚洲：Chilloutmix作为基础大模型，同时使用lora模型进行微调
       + lora模型可以选择直接从C站下载训练好的模型，也可以自行训练想要的模型（配置要求较高）
       + 训练教程
-    + 欧洲及拉丁美洲：PerfectWorld+Lora，先尝试一下看看效果
+    + 欧洲：PerfectWorld+Lora，先尝试一下看看效果
+    + 拉丁美洲：找到了Latin Beauty模型，尝试效果
   + 部署模型到stable diffusion
     + 大模型：存放路径：\sd-webui-aki-v4\models\Stable-diffusion
     + lora模型：存放路径：\sd-webui-aki-v4\models\Lora
     + 未知模型：存放路径：[https://spell.novelai.dev/](https://link.zhihu.com/?target=https%3A//spell.novelai.dev/)在此网站解析后放入相应路径即可
-    + 
+  + 部署完成后开始进行模型生成
+    + 首先进行中国女性模特的生成
+      + 首先通过chatgpt和C站上示例给出基础的正向tag和反向tag，并使用不同lora模型进行生成
+      + 在自行尝试多次之后，发现直接抄C站的作业非常好用，就是模型下起来确实很麻烦，若生成要求不多，建议直接一个base model走到底，找有区分的lora模型来进行微调
++ 进行动画生成，基础目标为嘴型动，其实可以达到整个模型动的效果，只是效果不佳
+  + 尝试使用D-ID和HeyGen进行生成，前者效率更高，后者效果出奇的好，可惜都需要付费
+    + https://studio.d-id.com/和 https://app.heygen.com/
+  + 因此尝试MakeItTake进行模拟，由于模型较大，初次尝试在colab进行demo运行
+    + 以下是运行过程中，遇到的问题
+      + 首先是![image](assets/error-1.png)这里的问题在于`face_alignment.LandmarksType.THREE_D`中的`LandmarksType`是没有_3D属性的，而是`THREE_D`属性，而初始代码使用的是前者
+      + 然后是![image](assets/error-2.png)此错误，是python中常见的库版本更新问题，在文件`requirements.txt`中，修改`librosa==0.9.2`即可
+      + 
+      + 
