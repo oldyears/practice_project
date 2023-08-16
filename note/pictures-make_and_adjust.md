@@ -6,31 +6,13 @@
 
 + 用stable diffusion产生中国，英国，俄国，法国，西班牙，葡萄牙，日本，阿拉伯国风格的男女模特或者地理风情的真实风格图片，总计80张（每个国家特色的10张），然后考虑人物的动画自动生成，包括语言对嘴型，以及各种情绪的动作和表情
 + 使用真实风格的模型
-+ 这里按照男：女：风情图 = 2：2：1的比例来生成这些图片
-
-
-
-### tags设计
-
-+ 中国风格：(Chinese),(female|male),(black hair),(brown eyes),(pale skin),(slim),(cheongsam|tang suit|hanfu|qipao|modern clothing),(jade|pearl|silver|gold),(fan|umbrella|lantern|flower),(pagoda|temple|palace|garden|mountain)
-+ 英国风格：(British),(female|male),(blonde|brown|red hair),(blue|green|brown eyes),(fair skin),(tall),(suit|dress|coat|hat|scarf),(watch|ring|necklace|earrings),(umbrella|glasses|book|tea cup),(castle|church|bridge|park|city)
-+ 俄国风格：(Russian),(female|male),(blonde|brown hair),(blue|green eyes),(fair skin),(strong),(fur coat|jacket|dress|boots),(hat|muffler|gloves),(balalaika|matryoshka doll|vodka bottle),(kremlin|cathedral|monument|forest|snow)
-+ 法国风格：(French),(female|male),(brown|black hair),(brown|hazel eyes),(olive skin),(slender),(beret|scarf|dress|suit),(perfume|lipstick|earrings|rings),(baguette|wine bottle|cheese plate|( (Eiffel Tower))|( (Louvre))|( (Notre Dame))|( (Arc de Triomphe))
-+ 西班牙风格：(Spanish),(female | male), (black | brown hair), (brown | hazel eyes), (tan skin), (curvy | muscular), (flamenco dress | shirt | pants | shoes), (flower | fan | shawl | earrings), (guitar | castanets | sangria glass), (( (Alhambra)) | (( (Sagrada Familia)) | (( (Plaza Mayor)) | (( (bullring)))
-+ 葡萄牙风格：(Portuguese), (female | male), (black | brown hair), (brown | green eyes), (olive skin), (average height), (dress | shirt | skirt | pants), (necklace | bracelet | earrings | ring), (guitarra portuguesa | pastel de nata | wine glass | cork), (( (Belem Tower)) | (( (Jeronimos Monastery)) | (( (Pena Palace)) | (( (Porto Bridge)))
-+ 日本风格：(Japanese), (female | male), (black hair), (brown eyes), (pale skin), (petite), (kimono | yukata | school uniform | cosplay), (hairpin | fan | umbrella | glasses), (sakura | sushi | sake cup | manga), (( (Mount Fuji)) | (( (Tokyo Tower)) | (( (Kyoto Temple)) | (( (Osaka Castle)))
-+ 阿拉伯风格：(Arabic), (female | male), (black hair), (brown eyes), (tan skin), (slim), (abaya | hijab | niqab | thawb), (gold | silver | pearl | ruby), (hookah pipe | coffee pot | dates plate | sword), (( (pyramid)) | (( (mosque)) | (( (desert)) | (( (oasis)))
-
-
-
-### 动画生成
-
-+ 使用Inpaint工具，可以在图像中标记出您想要移动的部分，然后生成多个变化的图像，然后将它们导入一个GIF或视频制作工具中，形成一个动画效果。
-+ 使用Deforum扩展，可以从头开始生成一种“变形”的动画，它会将一个图像逐渐变成另一个图像，并输出一个MP4视频文件，您还可以添加音频。
++ 这里按照男：女= 1：1的比例来生成这些图片
 
 
 
 ## 基本步骤
+
+### 配置环境
 
 + 首先第一步需要在本地配置stable diffusion的环境，现在可以在b站找到相应的一键部署整合包，这里给出我使用的资源链接
   + [【AI绘画】Stable Diffusion整合包v4.2发布！全新加速 解压即用 防爆显存 三分钟入门AI绘画 ☆可更新 ☆训练 ☆汉化_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1iM4y1y7oA/)
@@ -42,8 +24,13 @@
     + 至此stable diffusion的环境配置完成
   + 这个up也提供了一些关于二次元画风的图片生成教程，感兴趣的同学可以参考这个链接[【AI绘画】从零开始的AI绘画入门教程——魔法导论【持续更新】 - 哔哩哔哩 (bilibili.com)](https://www.bilibili.com/read/cv22159609)，但由于其个人价值观问题，未提供真人模型的训练方式，故后续的训练是我自己的经验
   + 附上显卡速度天体榜[sdperformance - Grist (getgrist.com)](https://docs.getgrist.com/3mjouqRSdkBY/sdperformance)
+
+### 模型学习
+
 + 配置好环境之后，就可以开始进行模型生成，如果只是想要根据tags进行图片生成，只需要根据喜好添加所需的tags即可。
-  + **注：**尽可能使用好的显卡进行训练，如果打开整合包后显示只能使用CPU进行训练，我的建议是去艺传学院的机房，听说那边显卡是3060
+
++ **注：**尽可能使用好的显卡进行训练，如果打开整合包后显示只能使用CPU进行训练，我的建议是去艺传学院的机房，听说那边显卡是3060
+
 + 如果要进行的是真人的模型训练，则需要进行以下步骤
   + 首先通过学习了解到stable diffusion的基本模型，并根据其模型特征来选择我们所需要的模型，以便于后续训练，推荐网站[https://civitai.com/](https://link.zhihu.com/?target=https%3A//civitai.com/)
     + 基础大模型
@@ -80,12 +67,74 @@
     + 首先进行中国女性模特的生成
       + 首先通过chatgpt和C站上示例给出基础的正向tag和反向tag，并使用不同lora模型进行生成
       + 在自行尝试多次之后，发现直接抄C站的作业非常好用，就是模型下起来确实很麻烦，若生成要求不多，建议直接一个base model走到底，找有区分的lora模型来进行微调
+
+### 动画生成尝试
+
 + 进行动画生成，基础目标为嘴型动，其实可以达到整个模型动的效果，只是效果不佳
   + 尝试使用D-ID和HeyGen进行生成，前者效率更高，后者效果出奇的好，可惜都需要付费
-    + https://studio.d-id.com/和 https://app.heygen.com/
-  + 因此尝试MakeItTake进行模拟，由于模型较大，初次尝试在colab进行demo运行
-    + 以下是运行过程中，遇到的问题
-      + 首先是![image](assets/error-1.png)这里的问题在于`face_alignment.LandmarksType.THREE_D`中的`LandmarksType`是没有_3D属性的，而是`THREE_D`属性，而初始代码使用的是前者
-      + 然后是![image](assets/error-2.png)此错误，是python中常见的库版本更新问题，在文件`requirements.txt`中，修改`librosa==0.9.2`即可
-      + 
-      + 
+  + https://studio.d-id.com/和 https://app.heygen.com/
++ 因此尝试MakeItTake进行模拟，由于模型较大，初次尝试在colab进行demo运行
+  + 以下是运行过程中，遇到的问题
+    + 首先是![image](assets/error-1.png)这里的问题在于`face_alignment.LandmarksType.THREE_D`中的`LandmarksType`是没有_3D属性的，而是`THREE_D`属性，而初始代码使用的是前者
+    + 然后是![image](assets/error-2.png)此错误，是python中常见的库版本更新问题，在文件`requirements.txt`中，修改`librosa==0.9.2`即可
++ 使用另一个模型`first-order-model`进行动画生成，可以通过输入的gif、音频或动画来进行生成图片的动画模拟
+  + 具体使用步骤没有上面那么复杂，直接运行其demo即可，可以选择不同拟合模式，具体效果如下
+
+
+
+### 图片生成
+
++ 进行生成中国，英国，俄国，法国，西班牙，葡萄牙，日本，阿拉伯国风格的男女模特图片，每个国家仅展示男女各一张，其余存储在文件夹中
++ 首先是中国
+  + 女性：![image](..\pictures\Chinese\chinese-1.png)
+  + 男性：![image](..\pictures\Chinese\chinese-6.png)
++ 英国
+  + 女性：![image](..\pictures\English\English-6.png)
+  + 男性：![image](..\pictures\English\English-1.png)
+
++ 俄国
+  + 女性：![image](..\pictures\Russian\Russian-1.png)
+  + 男性：![image](..\pictures\Russian\Russian-6.png)
+
++ 法国
+  + 女性：![image](..\pictures\French\French-1.png)
+  + 男性：![image](..\pictures\French\French-7.png)
+
++ 西班牙
+  + 女性：![image](..\pictures\Spanish\Spanish-1.png)
+  + 男性：![image](..\pictures\Spanish\Spanish-9.png)
+
++ 葡萄牙
+  + 女性：![image](..\pictures\Portugal\Portugal-1.png)
+  + 男性：![image](..\pictures\Portugal\Portugal-8.png)
+
++ 日本
+  + 女性：![image](..\pictures\Japanese\Japanese-2.png)
+  + 男性：![image](..\pictures\Japanese\Japanese-8.png)
+
++ 阿拉伯
+  + 女性：![image](..\pictures\Arabian\Latin-2.png)
+  + 男性：![image](..\pictures\Arabian\Arabian-2.png)
+
+
+## 经验总结
+
+### 模型选择
+
+#### 大模型
+
++ 最通用的，兼容风格最多的——**Realistic Vision V5.1**
++ 最具创造力的，偏向于浪漫风格的——**DreamShaper**
+
+#### Lora模型
+
++ 全靠关键字，只能说AI绘画的驱动力是**和资本
++ 效果最好的是亚洲
+
+#### tips
+
++ 直接在网上找相关的模特图片，放进tagger中进行tag的提取
++ 若提取后文生图的效果不佳，后续可进行图生图的处理
+
+
+
