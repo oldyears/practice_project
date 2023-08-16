@@ -123,8 +123,8 @@
 
 #### 大模型
 
-+ 最通用的，兼容风格最多的——**Realistic Vision V5.1**
-+ 最具创造力的，偏向于浪漫风格的——**DreamShaper**
++ 最通用的，兼容风格最多的——**Realistic Vision V5.1**——[SG161222/Realistic_Vision_V5.1_noVAE · Hugging Face](https://huggingface.co/SG161222/Realistic_Vision_V5.1_noVAE)
++ 最具创造力的，偏向于浪漫风格的——**DreamShaper**——[Lykon/DreamShaper · Hugging Face](https://huggingface.co/Lykon/DreamShaper)
 
 #### Lora模型
 
@@ -135,6 +135,14 @@
 
 + 直接在网上找相关的模特图片，放进tagger中进行tag的提取
 + 若提取后文生图的效果不佳，后续可进行图生图的处理
++ 如果自己的电脑设备配置确实很低，可以考虑使用阿里云的试用服务器，详细教程如下[【AI绘画】阿里云在线试用 免费服务器v100显卡 5分钟搭建WebUI 保姆级教程_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1po4y1877P/)
+  + 只能说是赛博观音
+  + 基础的教程按照视频都没有问题，这里我讲一下如何配置自定义大模型和lora模型
+  + 一切的改动和操作须在`sd-webui-aki-aliyun-v5.ipynb`文件中进行
+  + 自定义即自己添加新模型的位置在![image](assets/add-1.png)
+  + 这里的下载链接必须是直链，所以得去https://huggingface.co/上获取相关模型的下载直链，而文件名只需复制即可，存储位置需要根据添加的模型类型进行更改，若是大模型则放于`/mnt/workspace/stable-diffusion-webui/models/Stable-diffusion`中，若是Lora模型则放于`/mnt/workspace/stable-diffusion-webui/models/Lora`中，依次类推，下载的文件需要根据其类型不同改变存储位置
+  + 
+
 
 
 
